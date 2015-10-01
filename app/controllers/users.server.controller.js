@@ -49,3 +49,64 @@ exports.list = function(req, res, next) {
         }
     });
 };
+
+/**
+ *
+ * @param req
+ * @param res
+ */
+exports.read = function(req, res) {
+    res.json(req.user);
+};
+
+/**
+ * find user by ID
+ * @param req
+ * @param res
+ * @param next
+ * @param id
+ */
+exports.userByID = function(req, res, next, id) {
+    User.findOne({
+        _id: id
+    }, function(err, user) {
+        if (err) {
+            return next(err);
+        } else {
+            req.user = user;
+            next();
+        }
+    });
+};
+
+/**
+ * update existing user
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.update = function(req, res, next) {
+    User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
+        if (err) {
+            return next(err);
+        } else {
+            res.json(user);
+        }
+    });
+};
+
+/**
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
+exports.delete = function(req, res, next) {
+    req.user.remove(function(err) {
+        if (err) {
+            return next(err);
+        } else {
+            res.json(req.user);
+        }
+    })
+};

@@ -1,6 +1,7 @@
 /**
  * Created by pes on 01.10.15.
  */
+
 var config = require('./config'),
     mongoose = require('mongoose');
 /**

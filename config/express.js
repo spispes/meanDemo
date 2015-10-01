@@ -48,7 +48,7 @@ module.exports = function() {
     require("../app/routes/users.server.routes.js")(app);
 
     // ********************************************************************//
-    // ****************** End Routes ****************//
+    // ****************** End Routes **************************************//
 
     app.use(express.static('./public'));
 
