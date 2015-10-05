@@ -37,12 +37,7 @@ var getErrorMessage = function(err) {
     return message;
 };
 
-/**
- * Create a new controller method that renders the signin page
- * @param req
- * @param res
- * @param next
- */
+// Create a new controller method that renders the signin page
 exports.renderSignin = function(req, res, next) {
     // If user is not connected render the signin page, otherwise redirect the user back to the main application page
     if (!req.user) {
@@ -74,12 +69,7 @@ exports.renderSignup = function(req, res, next) {
     }
 };
 
-/**
- * Create a new controller method that creates new 'regular' user from req.body
- * @param req
- * @param res
- * @param next
- */
+// Create a new controller method that creates new 'regular' users
 exports.signup = function(req, res, next) {
     // If user is not connected, create and login a new user, otherwise redirect the user back to the main application page
     if (!req.user) {
