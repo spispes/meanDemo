@@ -2,18 +2,21 @@
  * Created by pes on 01.10.15.
  */
 
-var config = require('./config'),
+// Invoke 'strict' JavaScript mode
+'use strict';
+
+// Load the module dependencies
+var	config = require('./config'),
     mongoose = require('mongoose');
-/**
- *
- * @returns {Mongoose}
- */
+
+// Define the Mongoose configuration method
 module.exports = function() {
+    // Use Mongoose to connect to MongoDB
     var db = mongoose.connect(config.db);
 
-
-     //define schemas
+    // Load the 'User' model
     require('../app/models/user.server.model');
 
+    // Return the Mongoose connection instance
     return db;
 };
