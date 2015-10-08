@@ -16,7 +16,11 @@ var getErrorMessage = function(err) {
 	}
 };
 
-// Create a new controller method that creates new articles
+/**
+ * Create a new controller method that creates new articles
+ * @param req pass the article in the body of the request
+ * @param res
+ */
 exports.create = function(req, res) {
 	// Create a new article object
 	var article = new Article(req.body);
@@ -38,7 +42,11 @@ exports.create = function(req, res) {
 	});
 };
 
-// Create a new controller method that retrieves a list of articles
+/**
+ * Create a new controller method that retrieves a list of articles
+ * @param req
+ * @param res
+ */
 exports.list = function(req, res) {
 	// Use the model 'find' method to get a list of articles
 	Article.find().sort('-created').populate('creator', 'firstName lastName fullName').exec(function(err, articles) {
@@ -54,12 +62,20 @@ exports.list = function(req, res) {
 	});
 };
 
-// Create a new controller method that returns an existing article
+/**
+ * Create a new controller method that returns an existing article
+ * @param req
+ * @param res
+ */
 exports.read = function(req, res) {
 	res.json(req.article);
 };
 
-// Create a new controller method that updates an existing article
+/**
+ * Create a new controller method that updates an existing article
+ * @param req
+ * @param res
+ */
 exports.update = function(req, res) {
 	// Get the article from the 'request' object
 	var article = req.article;
@@ -82,7 +98,11 @@ exports.update = function(req, res) {
 	});
 };
 
-// Create a new controller method that delete an existing article
+/**
+ * Create a new controller method that delete an existing article
+ * @param req
+ * @param res
+ */
 exports.delete = function(req, res) {
 	// Get the article from the 'request' object
 	var article = req.article;
@@ -101,7 +121,13 @@ exports.delete = function(req, res) {
 	});
 };
 
-// Create a new controller middleware that retrieves a single existing article
+/**
+ * Create a new controller middleware that retrieves a single existing article
+ * @param req
+ * @param res
+ * @param next
+ * @param id
+ */
 exports.articleByID = function(req, res, next, id) {
 	// Use the model 'findById' method to find a single article 
 	Article.findById(id).populate('creator', 'firstName lastName fullName').exec(function(err, article) {
@@ -116,7 +142,12 @@ exports.articleByID = function(req, res, next, id) {
 	});
 };
 
-// Create a new controller middleware that is used to authorize an article operation 
+/**
+ * Create a new controller middleware that is used to authorize an article operation
+ * @param req
+ * @param res
+ * @param next
+ */
 exports.hasAuthorization = function(req, res, next) {
 	// If the current user is not the creator of the article send the appropriate error message
 	if (req.article.creator.id !== req.user.id) {
