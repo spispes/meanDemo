@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Model" type="mocha-javascript-test-runner" factoryName="Mocha">
+    <node-options />
+    <working-directory>$PROJECT_DIR$</working-directory>
+    <pass-parent-env>true</pass-parent-env>
+    <envs>
+      <env name="NODE_ENV" value="test" />
+    </envs>
+    <ui>tdd</ui>
+    <extra-mocha-options>app/tests</extra-mocha-options>
+    <test-directory>$PROJECT_DIR$/app/tests</test-directory>
+    <recursive>false</recursive>
+    <method />
+  </configuration>
+</component>
